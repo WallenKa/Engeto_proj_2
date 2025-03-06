@@ -57,7 +57,7 @@ def game(number, attempts):
             print("Correct, you've guessed the right number\n", textwrap.fill(f"in {attempts} guesses!", 47), sep="")
         underscore()
         print("That's amazing!")
-    elif bulls < 4: # tady asi smazat tu podminku
+    else:
         print(f"{bulls} bulls, {cows} cows")
     return attempts, bulls
 
