@@ -10,12 +10,15 @@ email: wallenka@icloud.com
 import random
 import textwrap
 
-# prints underscores so the code isn't cluttered with prints
 def underscore():
+    """Print underscores according to example output from Engeto Portal."""
     print("-" * 47)
 
-# generates a random 4 digit number, where numbers can't repeat and the 1st digit is not 0
+
 def generate_number():
+    """Generate a random 4 digit number.
+    The digits cannot repeat and the first digit is not 0.
+    """
     number = []
     while len(number) < 4:
         x = random.randrange(0,10)
@@ -26,8 +29,11 @@ def generate_number():
             number.insert(0, y)
     return number
 
-# defines game, takes generated number and attempts
 def game(number, attempts):
+    """Defines main part of game.
+    Takes number and attempts,
+    returns updated number of attempts and number of bulls.
+    """
     guess = []
     cows = 0
     bulls = 0
@@ -36,16 +42,16 @@ def game(number, attempts):
     while len(chosen_number) != 4 or not chosen_number.isnumeric():  # checks if user entered number is correct
         print("Enter a number:")
         underscore()
-        chosen_number = input(">>> ")
-        if len(chosen_number) != 4:
+        chosen_number = input(">>> ") # inputs digits from user
+        if len(chosen_number) != 4:  # checks if user input matches the generated number
             print("Enter a number that has 4 digits.")
         elif not chosen_number.isnumeric():
             print("Enter a valid number.")
-
     # convert user input string number into list of integers
     guess = [int(c) for c in chosen_number]
-
-    # guessing - if guessed number is correct and in correct position, add a bull, if correct and not in the correct position, add a cow
+    # guessing part of the game
+    # if guessed number is correct and in correct position, add a bull
+    # if correct and not in the correct position, add a cow
     for x in range(4):
         if guess[x] == number[x]:
             bulls += 1
@@ -62,7 +68,6 @@ def game(number, attempts):
         print(f"{bulls} bulls, {cows} cows")
     return attempts, bulls
 
-# define main function
 def main ():
 number = generate_number()
 attempts = 0
@@ -71,7 +76,7 @@ print("Hi there!")
 underscore()
 print("I've generated a random 4 digit number for you.\nLet's play a bulls and cows game.")
 underscore()
-while bulls != 4:
+while bulls != 4:  # while number is not guessed yet, pass attempts and bulls into game function
     attempts, bulls = game(number, attempts)
 
 # execute main code
