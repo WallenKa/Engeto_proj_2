@@ -69,15 +69,15 @@ def game(number, attempts):
     return attempts, bulls
 
 def main ():
-number = generate_number()
-attempts = 0
-bulls = 0
-print("Hi there!")
-underscore()
-print("I've generated a random 4 digit number for you.\nLet's play a bulls and cows game.")
-underscore()
-while bulls != 4:  # while number is not guessed yet, pass attempts and bulls into game function
-    attempts, bulls = game(number, attempts)
+    number = generate_number()
+    attempts = 0
+    bulls = 0
+    print("Hi there!")
+    underscore()
+    print("I've generated a random 4 digit number for you.\nLet's play a bulls and cows game.")
+    underscore()
+    while bulls != 4:  # while number is not guessed yet, pass attempts and bulls into game function
+        attempts, bulls = game(number, attempts)
 
 # execute main code
 if __name__ == "__main__":
