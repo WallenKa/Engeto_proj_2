@@ -33,7 +33,7 @@ def game(number, attempts):
     bulls = 0
     attempts += 1 # adds an attempt with every run
     chosen_number = "0"
-    while len(chosen_number) != 4 or chosen_number.isnumeric() is False:  # checks if user entered number is correct
+    while len(chosen_number) != 4 or not chosen_number.isnumeric():  # checks if user entered number is correct
         print("Enter a number:")
         underscore()
         chosen_number = input(">>> ")
@@ -45,12 +45,13 @@ def game(number, attempts):
     # convert user input string number into list of integers
     guess = [int(c) for c in chosen_number]
 
+    # guessing - if guessed number is correct and in correct position, add a bull, if correct and not in the correct position, add a cow
     for x in range(4):
         if guess[x] == number[x]:
             bulls += 1
         elif guess[x] in number and guess[x] != number[x]:
             cows += 1
-    if bulls == 4:
+    if bulls == 4:  # winning condition
         if attempts == 1:
             print(f"Correct, you've guessed the right number\nin {attempts} guess!")
         else:
@@ -61,7 +62,8 @@ def game(number, attempts):
         print(f"{bulls} bulls, {cows} cows")
     return attempts, bulls
 
-# tohle ma byt ve fc main
+# define main function
+def main ():
 number = generate_number()
 attempts = 0
 bulls = 0
@@ -72,4 +74,6 @@ underscore()
 while bulls != 4:
     attempts, bulls = game(number, attempts)
 
-
+# execute main code
+if __name__ == "__main__":
+    main()
